@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/lab4/BlazorApp/.vs/BlazorApp.slnx
+/lab4/BlazorApp/BlazorApp/BlazorApp/bin/Debug/net10.0
+/lab4/BlazorApp/BlazorApp/BlazorApp/obj
+/lab4/BlazorApp/BlazorApp/BlazorApp.Client/bin/Debug/net10.0
+/lab4/BlazorApp/BlazorApp/BlazorApp.Client/obj
+lab3/kafka_data
+lab3/zk_data
+lab3/zk_log
+/lab4/BlazorApp/BlazorApp/BlazorApp/wwwroot/lib/bootstrap/dist
+/lab4/BlazorApp/.vs/ProjectEvaluation
+/.vscode
