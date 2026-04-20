@@ -1,0 +1,93 @@
+.dashboard-container {
+    padding: 1rem;
+    font-family: sans-serif;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.card-content h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.card-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-value.station {
+    font-size: 1.2rem;
+}
+
+.unit {
+    font-size: 1rem;
+    color: #666;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.ranking-section {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.section-header h3 {
+    margin: 0 0 1rem 0;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rank {
+    font-weight: bold;
+    min-width: 30px;
+}
+
+.station-info {
+    flex: 1;
+}
+
+.station-name {
+    display: block;
+    font-weight: bold;
+}
+
+.visits {
+    text-align: right;
+}
+
+.no-data {
+    color: #666;
+    font-style: italic;
+}

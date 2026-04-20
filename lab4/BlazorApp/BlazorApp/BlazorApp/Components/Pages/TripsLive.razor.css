@@ -1,0 +1,91 @@
+.live-container {
+    padding: 1rem;
+    font-family: sans-serif;
+}
+
+.live-header {
+    margin-bottom: 1rem;
+}
+
+.live-header h1 {
+    margin: 0 0 0.5rem 0;
+}
+
+.live-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background: #eef;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.feed-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.btn-clear {
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+}
+
+.trips-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trip-card {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.trip-id {
+    font-weight: bold;
+}
+
+.station-flow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.station .label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.station .name {
+    font-weight: bold;
+}
+
+.arrow {
+    color: #666;
+}
+
+.trip-details {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
