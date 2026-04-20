@@ -1,0 +1,111 @@
+@page "/trips-live"
+@rendermode InteractiveServer
+@using BlazorApp.Models
+@using BlazorApp.Services
+@implements IDisposable
+@inject IKafkaService KafkaService
+@inject IConfiguration Configuration
+
+<PageTitle>Live Trip Monitor</PageTitle>
+
+<div class="live-container">
+    <header class="live-header">
+        <div class="header-content">
+            <h1>Live Trip Feed</h1>
+            <div class="live-badge">
+                <span class="dot"></span> LIVE STREAMING
+            </div>
+        </div>
+        <p>Monitoring raw data from topic: <code>@TopicName</code></p>
+    </header>
+
+    <div class="feed-controls">
+        <span class="counter">Showing latest <strong>@_trips.Count</strong> records</span>
+        <button class="btn-clear" @onclick="ClearFeed">Clear Feed</button>
+    </div>
+
+    <div class="trips-feed">
+        @if (_trips.Count == 0)
+        {
+            <div class="empty-state">
+                <div class="loader"></div>
+                <p>Waiting for messages from Kafka...</p>
+            </div>
+        }
+        else
+        {
+            <div class="feed-list">
+                @foreach (var trip in _trips)
+                {
+                    <div class="trip-card glass" @key="trip.TripId">
+                        <div class="card-header">
+                            <span class="trip-id">ID: @trip.TripId</span>
+                            <span class="timestamp">@trip.StartTime</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="station-flow">
+                                <div class="station from">
+                                    <span class="label">FROM</span>
+                                    <span class="name">@trip.FromStationName</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="station to">
+                                    <span class="label">TO</span>
+                                    <span class="name">@trip.ToStationName</span>
+                                </div>
+                            </div>
+                            <div class="trip-details">
+                                <span class="detail"><strong>Duration:</strong> @trip.TripDuration sec</span>
+                                <span class="detail"><strong>User:</strong> @trip.UserType</span>
+                                <span class="detail"><strong>Bike:</strong> #@trip.BikeId</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Trip> _trips = new();
+    private string TopicName = "Topic1";
+    private CancellationTokenSource _cts = new();
+    private const int MaxBuffer = 50;
+
+    protected override void OnInitialized()
+    {
+        TopicName = Configuration["Kafka:Topic"] ?? "Topic1";
+
+        KafkaService.Subscribe<Trip>(TopicName, trip =>
+        {
+            Console.WriteLine($"[UI Debug] Received trip {trip.TripId} for display");
+            InvokeAsync(() =>
+            {
+                // Create a new list to avoid thread-safety issues during rendering
+                var newList = new List<Trip>(_trips);
+                newList.Insert(0, trip);
+                
+                if (newList.Count > MaxBuffer)
+                {
+                    newList.RemoveAt(newList.Count - 1);
+                }
+
+                _trips = newList; // Atomic reference update
+                StateHasChanged();
+            });
+        }, _cts.Token);
+    }
+
+    private void ClearFeed()
+    {
+        _trips = new List<Trip>();
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _cts.Dispose();
+    }
+}
