@@ -7,6 +7,13 @@
     margin-bottom: 1rem;
 }
 
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
 .live-header h1 {
     margin: 0 0 0.5rem 0;
 }
@@ -21,6 +28,21 @@
     margin-top: 0.5rem;
 }
 
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
 .feed-controls {
     display: flex;
     justify-content: space-between;
@@ -30,6 +52,13 @@
 .btn-clear {
     padding: 0.3rem 0.6rem;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
 }
 
 .trips-feed {
