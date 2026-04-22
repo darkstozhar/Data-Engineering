@@ -10,6 +10,14 @@
 .dashboard-header h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #60a5fa, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dashboard-header p {
+    color: #94a3b8;
+    font-size: 1.1rem;
 }
 
 .stats-grid {
@@ -19,11 +27,35 @@
     margin-bottom: 2rem;
 }
 
+.glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
 .stat-card {
     padding: 1rem;
     border: 1px solid #ccc;
     background: #fff;
     border-radius: 4px;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
 }
 
 .card-content h3 {
@@ -39,6 +71,8 @@
 
 .card-value.station {
     font-size: 1.2rem;
+    line-height: 1.4;
+    color: #e2e8f0;
 }
 
 .unit {
@@ -50,6 +84,11 @@
     font-size: 0.9rem;
     color: #666;
 }
+
+/* Colors */
+.primary { border-left: 4px solid #3b82f6; }
+.secondary { border-left: 4px solid #8b5cf6; }
+.accent { border-left: 4px solid #f59e0b; }
 
 .ranking-section {
     padding: 1rem;
@@ -84,10 +123,26 @@
 }
 
 .visits {
+    font-weight: 700;
+    color: #cbd5e1;
     text-align: right;
+    min-width: 80px;
+}
+
+.visits small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: #64748b;
 }
 
 .no-data {
     color: #666;
     font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container { padding: 1rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .dashboard-header h1 { font-size: 1.8rem; }
 }
