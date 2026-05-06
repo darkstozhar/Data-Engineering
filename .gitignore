@@ -13,3 +13,4 @@ lab3/zk_log
 /lab4/BlazorApp/BlazorApp/BlazorApp/wwwroot/lib/bootstrap/dist
 /lab4/BlazorApp/.vs/ProjectEvaluation
 /.vscode
+/lab5/minio_data/*
